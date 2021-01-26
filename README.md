@@ -1,2 +1,2 @@
 # lutris-installer
-Mirror of lutris insallation script
+Installation script that is used for [installing Renegade X through Lutris](https://lutris.net/games/renegade-x/)
