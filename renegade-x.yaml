@@ -1,5 +1,5 @@
 files:
-- renx: https://renxdownloads.b-cdn.net/Renegade_X_Installer-3f1857a.msi
+- renx: 'N/A: Please select the .msi file from renegade-x.com'
 game:
   arch: win64
   exe: drive_c/Program Files (x86)/Renegade X/Binaries/Win64/UDK.exe
@@ -9,6 +9,11 @@ installer:
     arch: win64
     description: Creating Wine prefix
     name: create_prefix
+    prefix: $GAMEDIR
+- task:
+    app: dotnet452
+    description: Installing .net 4.5.2
+    name: winetricks
     prefix: $GAMEDIR
 - task:
     app: corefonts
@@ -51,17 +56,12 @@ installer:
     name: winetricks
     prefix: $GAMEDIR
 - task:
-    app: dotnet452
-    description: Installing .net 4.5.2
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
     app: win7
     description: Setting environment to Windows7
     name: winetricks
     prefix: $GAMEDIR
 - task:
-    args: /i "$CACHE/renx/Renegade_X_Installer-3f1857a.msi" /q
+    args: /i "$renx"
     executable: msiexec
     name: wineexec
     prefix: $GAMEDIR
@@ -73,11 +73,6 @@ installer:
     name: wineexec
     overrides:
       dxvk: false
-system:
-  disable_runtime: false
-  env:
-    DXVK_HUD: 0
 wine:
-  dxvk: true
-  overrides:
-    nvapi,nvapi64: disabled
+  esync: true
+  version: lutris-5.7-11-x86_64
