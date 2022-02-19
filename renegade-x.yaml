@@ -1,78 +1,79 @@
 files:
-- renx: 'N/A: Please select the .msi file from renegade-x.com'
+  - renx: "N/A: Please select the .msi file from https://ren-x.com"
 game:
   arch: win64
   exe: drive_c/Program Files (x86)/Renegade X/Binaries/Win64/UDK.exe
   prefix: $GAMEDIR
 installer:
-- task:
-    arch: win64
-    description: Creating Wine prefix
-    name: create_prefix
-    prefix: $GAMEDIR
-- task:
-    app: dotnet452
-    description: Installing .net 4.5.2
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: corefonts
-    description: Installing corefonts
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: vcrun2008
-    description: Installing visual code 2008
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: vcrun2010
-    description: Installing visual code 2010
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: xact
-    description: Installing xact
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: xact_x64
-    description: Installing xact_64
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: d3dx9
-    description: Installing d3dx9
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: d3dx9_43
-    description: Installing d3dx9_43.dll
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: msxml3
-    description: Installing msxml3
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    app: win7
-    description: Setting environment to Windows7
-    name: winetricks
-    prefix: $GAMEDIR
-- task:
-    args: /i "$renx"
-    executable: msiexec
-    name: wineexec
-    prefix: $GAMEDIR
-- task:
-    arch: win64
-    description: Running launcher for first time.
-    executable: $GAMEDIR/drive_c/Program Files (x86)/Renegade X/Launcher/Renegade
-      X Launcher.exe
-    name: wineexec
-    overrides:
-      dxvk: false
+  - task:
+      arch: win64
+      description: Creating Wine prefix
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      app: dotnet452
+      description: Installing .net 4.5.2
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: corefonts
+      description: Installing corefonts
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: vcrun2008
+      description: Installing visual code 2008
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: vcrun2010
+      description: Installing visual code 2010
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: xact
+      description: Installing xact
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: xact_x64
+      description: Installing xact_64
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: d3dx9
+      description: Installing d3dx9
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: d3dx9_43
+      description: Installing d3dx9_43.dll
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: msxml3
+      description: Installing msxml3
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      app: win7
+      description: Setting environment to Windows7
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      args: /i "$renx"
+      executable: msiexec
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      arch: win64
+      description: Running launcher for first time.
+      executable:
+        $GAMEDIR/drive_c/Program Files (x86)/Renegade X/Launcher/Renegade
+        X Launcher.exe
+      name: wineexec
+      overrides:
+        dxvk: false
 wine:
   esync: true
   version: lutris-5.7-11-x86_64
